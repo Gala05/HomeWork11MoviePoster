@@ -42,7 +42,7 @@ public class PosterManagerTest {
     public void testGetPostersInReverse() { // //последние добавленные фильмы
 
         Poster[] expected = {movie4, movie3, movie2, movie1};
-        Poster[] actual = pm.findLastAll();
+        Poster[] actual = pm.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }
