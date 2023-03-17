@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class PosterManTest {
     @Test
     public void getPostersInReverseAll() { //вывод всех фильмов в обратном порядке
-        PosterManager post = new PosterManager();
+        PosterManager post = new PosterManager(12);
         Poster movie1 = new Poster(1, "film1", "animated film", "imageUrl1");
         Poster movie2 = new Poster(2, "film2", "action movie", "imageUrl2");
         Poster movie3 = new Poster(3, "film3", "comedy", "imageUrl3");
@@ -34,7 +34,7 @@ public class PosterManTest {
 
         Poster[] expected = {movie12, movie11, movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3,
                 movie2, movie1};
-        Poster[] actual = post.findLastAll();
+        Poster[] actual = post.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -68,14 +68,14 @@ public class PosterManTest {
         post.addPosters(movie12);
 
         Poster[] expected = {movie12, movie11, movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3};
-        Poster[] actual = post.findLast10();
+        Poster[] actual = post.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void getPostersInReverseWithLimitTest() { //тест конструктора
-        PosterManager post = new PosterManager();
+        PosterManager post = new PosterManager(10);
         Poster movie1 = new Poster(1, "film1", "animated film", "imageUrl1");
         Poster movie2 = new Poster(2, "film2", "action movie", "imageUrl2");
         Poster movie3 = new Poster(3, "film3", "comedy", "imageUrl3");
@@ -94,14 +94,14 @@ public class PosterManTest {
         post.addPosters(movie8);
 
         Poster[] expected = {movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
-        Poster[] actual = post.findLastWithLimit(9);
+        Poster[] actual = post.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void getPostersInReverseWithLimitTest1() { //тест конструктора
-        PosterManager post = new PosterManager();
+        PosterManager post = new PosterManager(8);
         Poster movie1 = new Poster(1, "film1", "animated film", "imageUrl1");
         Poster movie2 = new Poster(2, "film2", "action movie", "imageUrl2");
         Poster movie3 = new Poster(3, "film3", "comedy", "imageUrl3");
@@ -119,8 +119,26 @@ public class PosterManTest {
         post.addPosters(movie7);
         post.addPosters(movie8);
 
-        Poster[] expected = {movie8, movie7};
-        Poster[] actual = post.findLastWithLimit(2);
+        Poster[] expected = {movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
+        Poster[] actual = post.findLast();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void getPostersInReverseAll1() { //вывод всех фильмов в обратном порядке
+        PosterManager post = new PosterManager(5);
+        Poster movie1 = new Poster(1, "film1", "animated film", "imageUrl1");
+        Poster movie2 = new Poster(2, "film2", "action movie", "imageUrl2");
+        Poster movie3 = new Poster(3, "film3", "comedy", "imageUrl3");
+
+        post.addPosters(movie1);
+        post.addPosters(movie2);
+        post.addPosters(movie3);
+
+
+        Poster[] expected = {movie3, movie2, movie1};
+        Poster[] actual = post.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }
