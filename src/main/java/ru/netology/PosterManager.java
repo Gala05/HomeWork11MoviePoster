@@ -1,10 +1,12 @@
 package ru.netology;
 
-import java.util.Arrays;
-
 public class PosterManager {
-    private Poster[] posters = new Poster[0];
+    private PosterRepository post;
     private int limitMovies;
+
+    public PosterManager(PosterRepository post) {
+        this.post = post;
+    }
 
     public PosterManager() { //конструктор
         this.limitMovies = 10;
@@ -14,34 +16,52 @@ public class PosterManager {
         this.limitMovies = limitMovies;
     }
 
-    public Poster[] findAll() { //список фильмов в афише
-        return posters;
+    public PosterRepository AllPosters() {
+        post.findAll();
+        return post;
     }
 
-    public Poster[] addPosters(Poster newFilm) { // метод добавления фильма к афише
+    public void add(Poster newMovie) {
+        post.save(newMovie);
+    }
 
-        Poster[] tmp = new Poster[posters.length + 1];
-        for (int i = 0; i < posters.length; i++) {
-            tmp[i] = posters[i];
-        }
-        tmp[tmp.length - 1] = newFilm;
-        posters = tmp;
-        return posters;
+    public PosterRepository findPoster(int item) {
+        post.finedById(item);
+        return post;
+    }
+
+    public PosterRepository removePoster(int item) {
+        post.removeById(item);
+        return post;
+    }
+
+    public PosterRepository removeAllPosters() {
+        post.removeAll();
+        return null;
     }
 
     public Poster[] findLast() { //вывод фильмов в порядке добавления
-        Poster[] result;
-        if (limitMovies > posters.length) {
-            result = new Poster[posters.length];
-            for (int i = 0; i < result.length; i++) {
-                result[i] = posters[posters.length - 1 - i];
-            }
-        } else {
-            result = new Poster[limitMovies];
-            for (int i = 0; i < result.length; i++) {
-                result[i] = posters[posters.length - 1 - i];
-            }
+        Poster[] all = post.findAll();
+        Poster[] reversed = new Poster[all.length];
+        for (int i = 0; i < reversed.length; i++) {
+            reversed[i] = all[all.length - 1 - i];
         }
-        return result;
+        return reversed;
+    }
+
+    public Poster[] getLast() { //вывод фильмов в порядке добавления
+        Poster[] all = post.findAll();
+        Poster[] reversed = new Poster[all.length];
+        int resultLength = 0;
+        if (limitMovies > all.length) {
+            resultLength = all.length;
+        } else {
+            resultLength = limitMovies;
+        }
+        Poster[] tmp = new Poster[resultLength];
+        for (int i = 0; i < resultLength; i++) {
+            tmp[i] = all[all.length - 1 - i];
+        }
+        return tmp;
     }
 }

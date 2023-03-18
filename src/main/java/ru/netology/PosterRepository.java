@@ -17,7 +17,7 @@ public class PosterRepository {
         return posters;
     }
 
-    public Poster fineById(int id) { // возвращает объект по идентификатору
+    public Poster finedById(int id) { // возвращает объект по идентификатору
 
         for (Poster poster : posters) {
             if (poster.getId() == id) {
@@ -44,4 +44,3 @@ public class PosterRepository {
         return tmp;
     }
 }
-

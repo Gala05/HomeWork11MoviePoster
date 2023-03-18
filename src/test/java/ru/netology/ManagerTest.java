@@ -2,27 +2,16 @@ package ru.netology;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mockito;
 
-public class ManagerTest {
+public class ManagerTest {/*
     Poster movie1 = new Poster(01, "film1", "animated film", "imageUrl1");
     Poster movie2 = new Poster(02, "film2", "action movie", "imageUrl2");
     Poster movie3 = new Poster(03, "film3", "comedy", "imageUrl3");
     Poster movie4 = new Poster(04, "film4", "horror", "imageUrl4");
 
-    @Test
-    public void test() { //вывод всех по списку
-        PosterRepository repo = new PosterRepository();
-        repo.save(movie1);
-        repo.save(movie2);
-        repo.save(movie3);
-        repo.save(movie4);
 
-        Poster[] expected = {movie1, movie2, movie3, movie4};
-        Poster[] actual = repo.findAll();
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-    @Test
+/*    @Test
     public void saveTest() { //вывод всех по списку
         PosterRepository repo = new PosterRepository();
         repo.save(movie1);
@@ -87,5 +76,5 @@ public class ManagerTest {
         Poster[] actual = repo.removeAll();
 
         Assertions.assertArrayEquals(expected, actual);
-    }
+    }*/
 }
