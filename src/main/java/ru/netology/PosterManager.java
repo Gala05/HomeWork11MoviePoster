@@ -28,18 +28,29 @@ public class PosterManager {
     }
 
     public Poster[] findLast() { //вывод фильмов в порядке добавления
-        Poster [] result;
+        int resultLength = 0;
         if (limitMovies > posters.length) {
-            result = new Poster[posters.length];
-            for (int i = 0; i < result.length; i++) {
-                result[i] = posters[posters.length - 1 - i];
-            }
+            resultLength = posters.length;
         } else {
-            result = new Poster[limitMovies];
-            for (int i = 0; i < result.length; i++) {
-                result[i] = posters[posters.length - 1 - i];
-            }
+            resultLength = limitMovies;
         }
-        return result;
+        Poster [] tmp = new Poster[resultLength];
+        for (int i = 0; i < resultLength; i++) {
+            tmp[i] = posters[posters.length - 1 - i];
+        }
+        return tmp;
+//        Poster [] result;
+//        if (limitMovies > posters.length) {
+//            result = new Poster[posters.length];
+//            for (int i = 0; i < result.length; i++) {
+//                result[i] = posters[posters.length - 1 - i];
+//            }
+//        } else {
+//            result = new Poster[limitMovies];
+//            for (int i = 0; i < result.length; i++) {
+//                result[i] = posters[posters.length - 1 - i];
+//            }
+//        }
+//        return result;
     }
 }
