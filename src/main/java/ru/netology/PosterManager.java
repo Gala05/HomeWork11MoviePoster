@@ -1,47 +1,48 @@
 package ru.netology;
 
 public class PosterManager {
-    private PosterRepository post;
-    private int limitMovies;
+    private PosterRepository repo;
+    //private int limitMovies;
 
-    public PosterManager(PosterRepository post) {
-        this.post = post;
+    public PosterManager(PosterRepository repo) {
+        this.repo = repo;
     }
 
-    public PosterManager() { //конструктор
+    /*public PosterManager() { //конструктор
         this.limitMovies = 10;
     }
 
     public PosterManager(int limitMovies) {
         this.limitMovies = limitMovies;
-    }
+    }*/
 
     public PosterRepository AllPosters() {
-        post.findAll();
-        return post;
+        repo.findAll();
+        return repo;
     }
 
-    public void add(Poster newMovie) {
-        post.save(newMovie);
+    public Poster[] add(Poster newMovie) {
+        Poster[] poster = repo.save(newMovie);
+        return poster;
     }
 
-    public PosterRepository findPoster(int item) {
-        post.finedById(item);
-        return post;
+    public PosterRepository findPoster(int id) {
+        repo.findById(id);
+        return repo;
     }
 
     public PosterRepository removePoster(int item) {
-        post.removeById(item);
-        return post;
+        repo.removeById(item);
+        return repo;
     }
 
     public PosterRepository removeAllPosters() {
-        post.removeAll();
+        repo.removeAll();
         return null;
     }
 
     public Poster[] findLast() { //вывод фильмов в порядке добавления
-        Poster[] all = post.findAll();
+        Poster[] all = repo.findAll();
         Poster[] reversed = new Poster[all.length];
         for (int i = 0; i < reversed.length; i++) {
             reversed[i] = all[all.length - 1 - i];
@@ -49,7 +50,7 @@ public class PosterManager {
         return reversed;
     }
 
-    public Poster[] getLast() { //вывод фильмов в порядке добавления
+    /*public Poster[] getLast() { //вывод фильмов в порядке добавления с лимитом
         Poster[] all = post.findAll();
         Poster[] reversed = new Poster[all.length];
         int resultLength = 0;
@@ -63,5 +64,5 @@ public class PosterManager {
             tmp[i] = all[all.length - 1 - i];
         }
         return tmp;
-    }
+    }*/
 }

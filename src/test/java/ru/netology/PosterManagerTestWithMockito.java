@@ -14,12 +14,35 @@ public class PosterManagerTestWithMockito {
     Poster movie4 = new Poster(4, "film4", "horror", "imageUrl4");
 
     @Test
-    public void findAllPostersTest() {
+    public void findAllTest() { // вывод всех фильмов по списку
         Poster[] movies = { movie1, movie2, movie3, movie4 };
 
         doReturn(movies).when(repo).findAll();
         PosterRepository expected = repo;
         PosterRepository actual = manager.AllPosters();
+
+        Assertions.assertEquals(expected, actual);
+    }
+    @Test
+    public void addTest() { // добавление фильма в массив
+        Poster[] movies = { movie1, movie2, movie3, movie4 };
+
+        doReturn(movies).when(repo).findAll();
+        Poster movie5 = new Poster(5, "film5", "animated film", "imageUrl5");
+        repo.save(movie5);
+        Poster[] expected = { movie1, movie2, movie3, movie4, movie5 };
+        Poster[] actual = manager.add(movie5);
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void findPosterTest() { // возврат объекта по идентификатору
+        Poster[] movies = { movie1, movie2, movie3, movie4 };
+
+        doReturn(movies).when(repo).findAll();
+        PosterRepository expected = repo;
+        PosterRepository actual = manager.findPoster(1);
 
         Assertions.assertEquals(expected, actual);
     }
