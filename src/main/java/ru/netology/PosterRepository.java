@@ -2,16 +2,7 @@ package ru.netology;
 
 public class PosterRepository {
     private Poster[] posters = new Poster[0];
-
     private int limitMovies;
-
-    public Poster[] getPosters() {
-        return posters;
-    }
-
-    public void setPosters(Poster[] posters) {
-        this.posters = posters;
-    }
 
     public int getLimitMovies() {
         return limitMovies;
@@ -21,12 +12,12 @@ public class PosterRepository {
         this.limitMovies = limitMovies;
     }
 
-    public PosterRepository() {
-        this.limitMovies = 10;
+    public Poster[] getPosters() {
+        return posters;
     }
 
-    public PosterRepository(int limitMovies) {
-        this.limitMovies = limitMovies;
+    public void setPosters(Poster[] posters) {
+        this.posters = posters;
     }
 
     public Poster[] findAll() { //список фильмов в афише
@@ -68,19 +59,5 @@ public class PosterRepository {
     public void removeAll() { //очиска репозитория
         Poster[] tmp = new Poster[0];
         posters = tmp;
-    }
-
-    public Poster[] getLast() { //вывод фильмов в порядке добавления с лимитом
-        int resultLength = 0;
-        if (limitMovies > posters.length) {
-            resultLength = posters.length;
-        } else {
-            resultLength = limitMovies;
-        }
-        Poster[] tmp = new Poster[resultLength];
-        for (int i = 0; i < resultLength; i++) {
-            tmp[i] = posters[posters.length - 1 - i];
-        }
-        return tmp;
     }
 }

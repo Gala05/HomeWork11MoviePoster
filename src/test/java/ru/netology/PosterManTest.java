@@ -215,8 +215,8 @@ public class PosterManTest {
 
     @Test
     public void findLastNotEnoughTest() { //вывод 7 фильмов из 5 с параметром
-        PosterRepository repo = new PosterRepository(7);
-        PosterManager manager = new PosterManager(repo);
+        PosterRepository repo = new PosterRepository();
+        PosterManager manager = new PosterManager(repo,7);
         Poster movie1 = new Poster(1, "film1", "animated film", "imageUrl1");
         Poster movie2 = new Poster(2, "film2", "action movie", "imageUrl2");
         Poster movie3 = new Poster(3, "film3", "comedy", "imageUrl3");
@@ -236,8 +236,8 @@ public class PosterManTest {
 
     @Test
     public void findLastInReverseWithLimitAll() { //вывод 8 фильмов из 8
-        PosterRepository repo = new PosterRepository(8);
-        PosterManager manager = new PosterManager(repo);
+        PosterRepository repo = new PosterRepository();
+        PosterManager manager = new PosterManager(repo,8);
         Poster movie1 = new Poster(1, "film1", "animated film", "imageUrl1");
         Poster movie2 = new Poster(2, "film2", "action movie", "imageUrl2");
         Poster movie3 = new Poster(3, "film3", "comedy", "imageUrl3");
@@ -262,8 +262,8 @@ public class PosterManTest {
     }
     @Test
     public void findLastInReverseWithParam() { //вывод 5 фильмов из 10
-        PosterRepository repo = new PosterRepository(5);
-        PosterManager manager = new PosterManager(repo);
+        PosterRepository repo = new PosterRepository();
+        PosterManager manager = new PosterManager(repo,5);
         Poster movie1 = new Poster(1, "film1", "animated film", "imageUrl1");
         Poster movie2 = new Poster(2, "film2", "action movie", "imageUrl2");
         Poster movie3 = new Poster(3, "film3", "comedy", "imageUrl3");
